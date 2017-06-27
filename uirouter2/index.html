@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app='ShoppingList'>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>ui routing - premade items list</title>
+  </head>
+  <body>
+    <h2>ui routing - premade items list</h2>
+
+    <ui-view></ui-view>
+    <!-- libraries -->
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script>
+    <!-- modules -->
+    <script src="src/shoppinglist/shoppinglist.module.js"></script>
+    <!-- routes -->
+    <script src="src/routes.js"></script>
+    <!-- shoppinglist module artifacts -->
+    <script src="src/shoppinglist/shoppinglist.component.js"></script>
+    <script src="src/shoppinglist/main-shoppinglist.component.js"></script>
+    <script src="src/shoppinglist/shoppinglist.service.js"></script>
+  </body>
+</html>

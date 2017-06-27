@@ -4,16 +4,19 @@
     <meta charset="utf-8">
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
-    <title>Expression and Interpolation</title>
+    <title>Filters</title>
   </head>
   <body>
-    <h1>Expression and Interpolation</h1>
+    <h1>Filters</h1>
     <div ng-controller="MsgController">
       {{name}} has a message for you: <br>
-      {{sayMessage();}}
-
+      Original: {{sayMessage();}} <br>
+      Loves: {{sayLovesMessage();}} <br>
+      Truth: {{sayLovesMessage() | truth : 'play' : 'watch'}} <br>
+      Big Truth: {{sayLovesMessage() | truth : 'play' : 'watch' | uppercase}}
       <div>
         <button ng-click="showImage()">Show Image</button>
+        Cost: {{ imageCost | currency : "#" : 3 }}
         <br>
         <img ng-src="images/image_{{stateOfBeing}}.jpg">
       </div>

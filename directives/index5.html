@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app='ShoppingListDirectiveCtrlApp'>
+  <head>
+    <meta charset="utf-8">
+    <script src="jquery.min.js"></script>
+    <script src="angular.min.js"></script>
+    <script src="app5.js"></script>
+    <link rel="stylesheet" href="styles5.css">
+    <title>Angular Directives: Manipulating DOM</title>
+  </head>
+  <body>
+    <h1>Angular Directives: Manipulating DOM</h1>
+
+    <!-- LIST - unlimited items -->
+    <div id="list" ng-controller='ShoppingListController as list'>
+      <input type="text" ng-model="list.itemName" placeholder="item name">
+      <input type="text" ng-model="list.itemQuantity" placeholder="quantity">
+      <button ng-click="list.addItem();">Add Item</button>
+      <span>{{ list.lastRemoved }}</span>
+      <shopping-list id="list1" items="list.items" title="{{list.title}}" on-remove="list.removeItem(index)">
+        <span>Warning! Warning! {{list.warning}}</span>
+      </shopping-list>
+
+      <shopping-list id="list2" items="list.items" title="{{list.title}}" on-remove="list.removeItem(index)">
+        <div>
+          <div class="title">Damn!</div>
+          <div>{{list.warning}}</div>
+        </div>
+      </shopping-list>
+    </div>
+  </body>
+</html>
