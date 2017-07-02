@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Narrow Down Your Menu Choice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+  </head>
+  <body ng-app="NarrowItDownApp">
+    <div class="container" ng-controller="NarrowItDownController as nidCtrl">
+      <h2>Narrow Down Your Menu Choice</h2>
+      <form class="form-inline">
+        <div class="form-group">
+          <input type="text" ng-model="nidCtrl.searchTerm" placeholder="Search Term" class="form-control">
+        </div>
+        <div class="form-group narrow-button">
+          <button ng-click="nidCtrl.narrowIt();" class="btn btn-sm btn-primary">Narrow It Down For Me!</button>
+        </div>
+      </form>
+
+      <items-loader-indicator></items-loader-indicator>
+
+      <!-- found-items should be implemented as a component -->
+      <found-items found="nidCtrl.items" on-remove="nidCtrl.removeItem(index)"></found-items>
+    </div>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

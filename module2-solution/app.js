@@ -4,6 +4,7 @@
   angular.module('ShoppingListCheckOff', [])
   .controller('ToBuyController', ToBuyController)
   .controller('AlreadyBoughtController', AlreadyBoughtController)
+  .controller('AddNewItemController', AddNewItemController)
   .service('ShoppingListCheckOffService', ShoppingListCheckOffService);
 
   ToBuyController.$inject = ['ShoppingListCheckOffService'];
@@ -27,6 +28,18 @@
     bought.empty = function () {
       return bought.items.length === 0;
     };
+  }
+
+  AddNewItemController.$inject = ['ShoppingListCheckOffService'];
+  function AddNewItemController (ShoppingListCheckOffService) {
+    var addItem = this;
+
+    addItem.itemName = "";
+    addItem.itemQuantity = "";
+
+    addItem.insertItem = function () {
+      ShoppingListCheckOffService.addItem(addItem.itemName, addItem.itemQuantity);
+    }
   }
 
   function ShoppingListCheckOffService () {
@@ -57,6 +70,14 @@
     service.checkOff = function (itemIndex) {
       bought.push(toBuy[itemIndex]);
       toBuy.splice(itemIndex, 1);
+    };
+
+    service.addItem = function (name, quantity) {
+      var item = {
+        name: name,
+        quantity: quantity
+      };
+      toBuy.push(item);
     };
   }
 })();

@@ -1,0 +1,31 @@
+<div class="form-group">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Result</h3>
+      <label class="emptyMessage" ng-if="list.isEmpty()">Nothing found</label>
+    </div>
+  </div>
+  <div class="row" ng-if="list.isNotEmpty()">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-stripped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Short Name</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in list.found">
+              <td>{{item.name}}</td>
+              <td>{{item.short_name}}</td>
+              <td>{{item.description}}</td>
+              <td><button class="btn btn-xs btn-default" ng-click="list.onRemove({index: $index});">Don't want this one!</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
